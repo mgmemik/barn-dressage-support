@@ -9,3 +9,6 @@ for _l, (_faq, _term) in SINGLE.items():
     _q, _a = T[_l]['faq'][0]
     T[_l]['faq'][0] = (_q, _a + ' ' + _faq)
     T[_l]['terms']['sub'] = [T[_l]['terms']['sub'][0], _term, *T[_l]['terms']['sub'][1:]]
+# no federation name anywhere (see i18n_nofei.py)
+from i18n_nofei import apply as _nofei
+_nofei(T)
