@@ -12,3 +12,6 @@ for _l, (_faq, _term) in SINGLE.items():
 # no federation name anywhere (see i18n_nofei.py)
 from i18n_nofei import apply as _nofei
 _nofei(T)
+# anonymous usage statistics (TelemetryDeck) since 2026-09-22
+from i18n_telemetry import apply as _telemetry
+_telemetry(T)
