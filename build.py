@@ -6,6 +6,7 @@ from i18n import T, ORDER
 
 EULA = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/'
 APPLE_PRIVACY = 'https://www.apple.com/legal/privacy/'
+GOOGLE_PARTNERS = 'https://policies.google.com/technologies/partner-sites'
 MAIL = 'gmemik@gmail.com'
 MARK = '''<div class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" width="56" height="56" role="img">
 <rect x="14" y="8" width="36" height="48" rx="3" fill="none" stroke="#f0b64a" stroke-width="4"/>
@@ -54,9 +55,9 @@ for lang in ORDER:
     open(fname('index', lang), 'w').write(shell('index', lang, t['nav_support'], t['tagline'], body))
     # privacy
     p = t['privacy']
-    secs = ''.join(f'<h2>{e(h)}</h2><p>{e(x)}</p>' for h, x in p['sections'])
+    secs = ''.join(f'<h2>{e(h)}</h2><p>{e(x)}</p>' for h, x in p['sections']).replace('{google}', f'<a href="{GOOGLE_PARTNERS}">{GOOGLE_PARTNERS}</a>')
     gc = e(p['gc'][1]).replace('{apple}', f'<a href="{APPLE_PRIVACY}">Apple Privacy Policy</a>')
-    body = f'''<h1>{e(t["nav_privacy"])}</h1><p class="meta">Barn Dressage · thebarnapp · {e(t["effective"])}</p>
+    body = f'''<h1>{e(t["nav_privacy"])}</h1><p class="meta">Barn Dressage · thebarnapp · {e(t.get("effective_privacy", t["effective"]))}</p>
 <p class="summary">{e(p["short"])}</p>
 <h2>{e(p["h_not"])}</h2>{ul(p["not"])}
 {secs}

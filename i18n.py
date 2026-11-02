@@ -15,3 +15,6 @@ _nofei(T)
 # anonymous usage statistics (TelemetryDeck) since 2026-09-22
 from i18n_telemetry import apply as _telemetry
 _telemetry(T)
+# optional rewarded video ads (Google AdMob) since 2026-11-02, app 1.0.6 (see i18n_ads.py)
+from i18n_ads import apply as _ads
+_ads(T)
